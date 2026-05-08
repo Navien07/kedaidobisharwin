@@ -157,6 +157,10 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    white-space: nowrap;
+    flex-shrink: 1;
+    min-width: 0;
+    overflow: hidden;
   }
   .nav-logo .logo-badge {
     background: var(--teal);
@@ -1312,9 +1316,13 @@
     body { padding-top: 106px; }
     img, video { max-width: 100%; height: auto; }
   }
+  @media (max-width: 768px) {
+    .logo-badge { display: none; }
+    .nav-logo { font-size: 17px; gap: 6px; }
+  }
   @media (max-width: 480px) {
     .topbar { height: 38px; min-height: 38px; }
-    .nav-logo { font-size: 16px; }
+    .nav-logo { font-size: 15px; }
     .logo-badge { display: none; }
     .hero-trust-row { gap: 16px; }
     .trust-pill { font-size: 12px; }
