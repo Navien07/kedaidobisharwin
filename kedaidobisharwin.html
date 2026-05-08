@@ -949,16 +949,6 @@
   }
   .faq-item.open .faq-a { max-height: 300px; padding: 0 0 22px; }
 
-  /* ─── INSTAGRAM STRIP ──────────────────── */
-
-
-    aspect-ratio: 1; border-radius: var(--radius-sm);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 600; color: #fff;
-    text-align: center; position: relative; overflow: hidden;
-    cursor: pointer; transition: transform 0.3s;
-  }
-
   /* ─── CTA BANNER ───────────────────────── */
   .cta-banner {
     background: var(--ink); padding: 80px 5%;
@@ -1313,11 +1303,11 @@
     .price-table { min-width: 320px; }
     .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
     .b2b-wrap { padding: 24px !important; gap: 32px !important; }
-    body { padding-top: 80px; }
+    body { padding-top: 106px; }
     img, video { max-width: 100%; height: auto; }
   }
   @media (max-width: 480px) {
-    .topbar { height: auto; min-height: 32px; }
+    .topbar { height: 38px; min-height: 38px; }
     .nav-logo { font-size: 16px; }
     .logo-badge { display: none; }
     .hero-trust-row { gap: 16px; }
@@ -1784,6 +1774,92 @@
   /* Corner animate in */
   .ld-corner { animation: ldCornerIn 0.5s 0.3s both ease; }
   @keyframes ldCornerIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 0.4; transform: scale(1); } }
+
+  /* ─── MOBILE COMPREHENSIVE FIXES ──────── */
+
+  /* Hero: no giant empty space on mobile since hero-right is hidden */
+  @media (max-width: 1024px) {
+    .hero { min-height: auto; padding-top: 60px; padding-bottom: 60px; }
+  }
+
+  /* Social proof rotating quote: allow height to grow with content on mobile */
+  @media (max-width: 900px) {
+    .sp-right { height: auto; min-height: 80px; overflow: visible; }
+    .sp-quote:not(.active) { pointer-events: none; }
+  }
+
+  /* Process image: fully responsive on mobile */
+  @media (max-width: 600px) {
+    .process-img { max-width: 100%; width: 100%; height: 180px; margin-top: 32px; }
+    .hero { min-height: auto; padding-top: 40px; padding-bottom: 48px; }
+    .hero h1 { font-size: clamp(26px, 8vw, 32px); }
+    .hero-sub { font-size: 15px; }
+    .promo-banner { font-size: 12px; padding: 8px 44px 8px 12px; line-height: 1.4; }
+    .section-title { font-size: clamp(24px, 7vw, 28px); }
+    .estimator-card { padding: 24px 16px; }
+    .ba-item { height: 200px; }
+    .b2b-form { padding: 24px 16px; }
+    .cta-banner { padding: 56px 5%; }
+    .stats-bar { padding: 32px 5%; }
+    .stat-item { padding: 12px 8px; }
+    /* Ensure price tables scroll properly */
+    .compare-wrap { -webkit-overflow-scrolling: touch; }
+    /* Guarantee cards full-width */
+    .guarantee-grid { gap: 16px; }
+    .guarantee-card { padding: 24px 20px; }
+    /* Tcard padding */
+    .tcard { padding: 24px 20px; }
+    /* Footer spacing */
+    footer { padding: 48px 5% 80px; }
+    /* B2B wrap readable */
+    .b2b-wrap { border-radius: 16px; }
+    /* Areas grid 2-col already set, reduce gap */
+    .areas-grid { gap: 8px; }
+    .area-pill { padding: 10px 12px; font-size: 12px; }
+    /* Heritage marquee text size */
+    .heritage-item { font-size: 12px; letter-spacing: 1px; }
+  }
+
+  /* Nav: hide lang toggle on very small screens to prevent overflow */
+  @media (max-width: 380px) {
+    .lang-sw { display: none; }
+    .nav-logo { font-size: 14px; }
+    nav { padding: 0 4%; }
+  }
+
+  /* Before/after slider: prevent scroll conflict on touch */
+  .ba-item { touch-action: pan-y; }
+
+  /* Ensure all images are responsive by default */
+  img { max-width: 100%; height: auto; }
+  .service-card-img { height: 160px; width: 100%; object-fit: cover; }
+  @media (max-width: 480px) {
+    .service-card-img { height: 140px; }
+  }
+
+  /* Mobile bar safe area (iPhone home indicator) */
+  @media (max-width: 768px) {
+    .mobile-bar { padding-bottom: env(safe-area-inset-bottom, 0); height: auto; min-height: 64px; }
+    .mobile-bar a { padding: 14px 0; }
+    body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0)); }
+  }
+
+  /* WA float: move up when mobile bar is visible */
+  @media (max-width: 768px) {
+    .wa-float { bottom: calc(80px + env(safe-area-inset-bottom, 0)); right: 16px; width: 52px; height: 52px; font-size: 24px; }
+  }
+
+  /* Ensure nav stays below topbar at all sizes */
+  @media (max-width: 600px) {
+    nav { top: 38px; }
+  }
+
+  /* Fix any horizontal overflow on mobile */
+  @media (max-width: 768px) {
+    section, .stats-bar, .heritage-band, .social-proof, .cta-banner, footer {
+      overflow-x: hidden;
+    }
+  }
 
 </style>
 </head>
@@ -2437,7 +2513,7 @@
 
 <!-- ABOUT -->
 <section class="section" id="about">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center" class="reveal">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center" class="reveal about-grid">
     <div>
       <div class="section-label" id="i18n-sec-about-lbl">Our Story</div>
       <h2 class="section-title" id="i18n-sec-about-title" style="margin-bottom:24px">45 Years.<br>One Family.<br>One Promise.</h2>
