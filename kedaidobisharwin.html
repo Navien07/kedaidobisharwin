@@ -1243,9 +1243,15 @@
   /* ─── RESPONSIVE ───────────────────────── */
   @media (max-width: 1024px) {
     .hero-split { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
+    .hero-right { display: block; margin-top: 36px; }
+    .hero-image { height: 320px; border-radius: 16px; }
+    .booking-card { display: none; }
     .ba-grid { grid-template-columns: 1fr; }
     .ba-item { height: 220px; }
+  }
+  @media (max-width: 600px) {
+    .hero-image { height: 220px; border-radius: 12px; }
+    .hero-right { margin-top: 24px; }
   }
   @media (max-width: 900px) {
     .nav-links { display: none; }
