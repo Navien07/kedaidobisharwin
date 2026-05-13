@@ -185,6 +185,7 @@
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
+    text-transform: uppercase;
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--teal); }
@@ -282,6 +283,7 @@
     color: var(--ink);
     max-width: 600px;
     margin-bottom: 28px;
+    text-transform: uppercase;
     animation: fadeUp 0.7s 0.1s ease both;
   }
   .hero h1 em {
@@ -465,6 +467,7 @@
     font-size: clamp(32px, 4.5vw, 56px);
     font-weight: 800; line-height: 1.1;
     margin-bottom: 20px; color: var(--ink);
+    text-transform: uppercase;
   }
   .section-sub {
     font-size: 17px; color: var(--muted);
@@ -1305,13 +1308,15 @@
     .est-btn { padding: 8px 14px; font-size: 13px; }
     .section { padding: 60px 5%; }
     .section-title { font-size: 28px; }
-    .compare-header, .compare-row { grid-template-columns: 1fr; gap: 4px; }
-    .compare-header div:not(:first-child) { display: none; }
+    .compare-wrap { overflow: hidden; width: 100%; box-sizing: border-box; }
+    .compare-header, .compare-row { grid-template-columns: 1fr 1fr; gap: 8px; padding: 14px 16px; box-sizing: border-box; width: 100%; }
+    .compare-header div:last-child { display: none; }
     .compare-row > div:last-child { display: none; }
+    .compare-feature { font-size: 13px; }
+    .compare-us { font-size: 13px; }
     .pricing-tabs { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
     .pricing-tabs::-webkit-scrollbar { height: 3px; }
     .ptab { flex-shrink: 0; }
-    .compare-wrap { overflow-x: auto; }
     .price-table { min-width: 320px; }
     .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
     .b2b-wrap { padding: 24px !important; gap: 32px !important; }
@@ -2196,7 +2201,7 @@
 <section class="section" style="background:var(--surface2)">
   <div style="text-align:center;margin-bottom:48px">
     <div class="section-label">Quick Quote</div>
-    <h2 class="section-title">Estimate Your Order &mdash; Instantly.</h2>
+    <h2 class="section-title">Estimate Your Order Instantly.</h2>
   </div>
   <div class="estimator-card reveal">
     <div class="est-step">
