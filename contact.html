@@ -97,6 +97,23 @@
     transition: transform 0.2s, box-shadow 0.2s;
   }
   .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,168,150,0.3); }
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
 
   /* HERO */
   .contact-hero {
@@ -330,7 +347,24 @@
 
   /* MOBILE */
   @media (max-width: 768px) {
-    .nav-links { display: none; }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 68px; left: 0; right: 0;
+      background: #fff;
+      padding: 16px 5% 20px;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      z-index: 999;
+      list-style: none;
+      gap: 0;
+    }
+    nav.menu-open .nav-links { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
+    .nav-links li:last-child a { border-bottom: none; }
+    .nav-hamburger { display: flex; }
     .nav-cta .nav-cta-text { display: none; }
     .nav-cta { padding: 10px 14px; }
     .contact-grid { grid-template-columns: 1fr; }
@@ -340,7 +374,7 @@
   }
   @media (max-width: 600px) {
     .contact-card { padding: 24px 20px; }
-    .wa-btn, .email-btn { width: 100%; justify-content: center; }
+    .wa-btn, .email-btn, .waze-btn { width: 100%; justify-content: center; }
     .nav-cta { display: none; }
   }
 
@@ -376,11 +410,30 @@
     <li><a href="kedaidobisharwin.html#about">About Us</a></li>
     <li><a href="contact.html" class="active">Contact Us</a></li>
   </ul>
-  <a href="https://wa.me/601116456310?text=%5BFrom%20Website%5D%20Hi%2C%20I%20want%20to%20enquire%20about%20your%20services" class="nav-cta" rel="noopener">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.212l-.304-.182-2.868.852.852-2.868-.182-.304A8 8 0 1112 20z"/></svg>
-    <span class="nav-cta-text">WhatsApp Us</span>
-  </a>
+  <div style="display:flex;align-items:center;gap:12px">
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="https://wa.me/601116456310?text=%5BFrom%20Website%5D%20Hi%2C%20I%20want%20to%20enquire%20about%20your%20services" class="nav-cta" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 01-4.243-1.212l-.304-.182-2.868.852.852-2.868-.182-.304A8 8 0 1112 20z"/></svg>
+      <span class="nav-cta-text">WhatsApp Us</span>
+    </a>
+  </div>
 </nav>
+<script>
+  var navbar = document.querySelector('nav');
+  var hamburger = document.getElementById('hamburger');
+  hamburger.addEventListener('click', function() {
+    var open = navbar.classList.toggle('menu-open');
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      navbar.classList.remove('menu-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
 
 <!-- HERO -->
 <div class="contact-hero">
